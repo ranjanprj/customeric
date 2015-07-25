@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Customeric</display-name>
+ 
+ 
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
+        <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+        <!--        <async-supported>true</async-supported>-->
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>
+                
+                #DEFAULT_AUTHENTICATION_QUERY = "select password from users where username = ?";
+                #DEFAULT_USER_ROLES_QUERY = "select role_name from user_roles where username = ?";
+                #DEFAULT_PERMISSIONS_QUERY = "select permission from roles_permissions where role_name = ?";
+    
+                
+                [main]
+                #MyRealm = ui.com.bc.MyRealm
+                #securityManager.realms = $MyRealm
+                
+                #jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm
+                jdbcRealm=com.customeric.JNDIAndSaltAwareJdbcRealm
+                jdbcRealm.authenticationQuery = select password, salt from users where username = ?
+                jdbcRealm.userRolesQuery = select rolename from roles left outer join users_roles on roles.id = users_roles.roles_id left outer join users on users.id = users_roles.users_id where users.username = ?
+                jdbcRealm.permissionsQuery = select permission from permissions left outer join roles_permissions on permissions.id = roles_permissions.permissions_id left outer join roles on roles.id = roles_permissions.roles_id where roles.rolename = ?
+                jdbcRealm.permissionsLookupEnabled=true
+                #jdbcRealm.authorizationCache=true             
+               
+                                
+               
+                securityManager.realms = $jdbcRealm
+                
+                authc.loginUrl = /app/login.jsp
+                               
+                #doc - http://commons.apache.org/dbcp/apidocs/org/apache/commons/dbcp/BasicDataSource.html    
+                
+                #this is what should be used
+                
+                ds =  org.apache.tomcat.jdbc.pool.DataSource
+                ds.driverClassName = org.apache.derby.jdbc.ClientDriver
+                ds.username = customeric
+                ds.password = customeric1981                
+                ds.url = jdbc:derby://localhost:1527/customericdb;create=true
+                ds.maxActive = 20
+                ds.minIdle = 10
+                ds.minEvictableIdleTimeMillis = 1000 * 60 * 8
+                ds.timeBetweenEvictionRunsMillis  = 1000 * 60 * 10
+                ds.removeAbandoned = true
+                ds.removeAbandonedTimeout = 600
+                jdbcRealm.dataSource = $ds          
+                
+                # password hashing specification, put something big for hasIterations
+                sha256Matcher = org.apache.shiro.authc.credential.HashedCredentialsMatcher
+                sha256Matcher.hashAlgorithmName=SHA-256
+                sha256Matcher.hashIterations=1
+               
+                jdbcRealm.credentialsMatcher = $sha256Matcher
+                 
+                # *** ENABLE IN PRODUCTION ****               
+                #cacheManager = org.apache.shiro.cache.ehcache.EhCacheManager
+                #securityManager.cacheManager = $cacheManager
+
+                [urls]
+                /app/rest/mobile/** = authcBasic
+                /app/rest/web/** = authc
+                /app/** = authc
+                
+                #/* = authc,ssl[8181]                
+
+            </param-value>
+        </init-param>
+    </filter>
+    
+    
+    <filter>
+        <filter-name>ExpiresFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+        <init-param>
+            <param-name>ExpiresByType image</param-name>
+            <param-value>access plus 1 years</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType text/css</param-name>
+            <param-value>access plus 1 years</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType application/javascript</param-name>
+            <param-value>access plus 10 years</param-value>
+        </init-param>
+    </filter>
+  
+    <!--    <filter>
+        <filter-name>CacheControl</filter-name>
+        <filter-class>com.filter.cache.CacheControl</filter-class>
+    </filter>-->
+
+    <!--    <filter-mapping>
+        <filter-name>CacheControl</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/app/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>ExpiresFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/CUSTOMERIC_DS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <servlet>
+        <servlet-name>ServletAdaptor</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.customeric.rest.MyApplication</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletAdaptor</servlet-name>
+        <url-pattern>/app/rest/*</url-pattern>
+    </servlet-mapping>
+   
+   
+   
+   
+    <servlet>
+        <description>Atmospherefilter</description>
+        <servlet-name>Atmospherefilter</servlet-name>
+        <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>com.customeric.WicketApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>configuration</param-name>
+            <param-value>development</param-value>
+        </init-param>
+        <init-param>
+            <param-name>org.atmosphere.useWebSocket</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>org.atmosphere.useNative</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>org.atmosphere.cpr.sessionSupport</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>filterMappingUrlPattern</param-name>
+            <param-value>/app/w/*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>org.atmosphere.websocket.WebSocketProtocol</param-name>
+            <param-value>org.atmosphere.websocket.protocol.EchoProtocol</param-value>
+        </init-param>
+        <init-param>
+            <param-name>org.atmosphere.cpr.broadcastFilterClasses</param-name>
+            <param-value>org.apache.wicket.atmosphere.TrackMessageSizeFilter</param-value>
+        </init-param>
+        
+        <load-on-startup>0</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Atmospherefilter</servlet-name>
+        <url-pattern>/app/w/*</url-pattern>
+    </servlet-mapping>
+    
+    <session-config>
+        <session-timeout>10</session-timeout>
+        
+    </session-config>
+</web-app>

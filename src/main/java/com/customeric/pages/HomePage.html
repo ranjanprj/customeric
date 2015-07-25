@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+        <title>Customeric</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            html,
+            body {
+                overflow-x: hidden; /* Prevent scroll on narrow devices */
+                background: url("../../icons/bg.png") repeat;
+            }
+            body {
+                padding-top: 70px;
+                /*font-size: 12px;*/
+            }
+            div#headBar{
+
+                background-color:#124463;
+            }
+            footer {
+                padding: 30px 0;
+            }
+            .highlight {
+                border: 1px solid #E1E1E8;
+                border-radius: 4px;
+                display: block;
+                margin-bottom: 14px;
+                /*padding: 12px;*/
+                background: none repeat scroll 0 0 #fff;
+                border-radius: 5px;
+                box-shadow: 0 1px 4px #999999;
+            }
+
+            .highlightContextual {
+                margin-right: 0px;
+                background-color: lightgray;
+                border: 1px solid #E1E1E8;
+                border-radius: 4px;
+                display: block;
+                margin-bottom: 14px;
+                padding: 12px;
+            }
+        </style>
+    </head>
+
+
+    <body>
+
+        <div id="headBar" class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Customeric</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="app/w/home">Home</a></li>
+                        <li><a href="app/w/workbench">Work Bench</a></li>
+                        
+                        <li><a href="app/w/leads">Leads</a></li>
+                        <li><a href="app/w/contacts">Contacts</a></li>
+                        <li><a href="app/w/accounts">Accounts</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav ">
+                        <li><a href="#"><span class="badge">42</span></a></li>  
+                        <li><a href="#"><span class="badge">42</span></a></li>                        
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+
+                      <li><a href="app/w/userprofile">
+                                <img style="max-height: 20px;max-width: 20px;" src="icons/big_user.jpg"/>
+                                <span class="badge">Ranjan</span></a>
+                        </li>  
+                        <li><a href="app/w/logoff"><small>log off</small></a></li>                
+                    </ul>
+
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.container -->
+        </div><!-- /.navbar -->
+        <div class="container">
+
+            <div class="row row-offcanvas row-offcanvas-right">
+
+                <div class="col-xs-12 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                    <ul  class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a href="#">
+
+                                <span class="badge pull-right">42</span>
+                                Hot Leads
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <span class="badge pull-right">3</span>
+                                Follow Up
+                            </a>
+                        </li>
+                    </ul>
+                </div><!--/span-->
+
+                <!--MAIN WINDOW
+                ---------------------------->
+                <div class="col-xs-12 col-sm-9">
+
+
+
+
+
+              
+
+
+                    <!--Account FORM
+                    ---------------------->
+                    <div class="row">
+
+                        <div class="col-xs-12">
+                              <div class="panel panel-default highlight">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">   Account Information</h3>
+                                </div>
+                                <div class="panel-body">
+                            <form class="form" role="form">
+                             
+
+                                    <div class="form-group">
+                                        <label for="firstName">Company Name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name"/>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Street1</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Street 2</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Zip</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">City</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">State</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Country</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Zip"/>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="input-group col-xs-6">
+                                        <label for="emailAddress">Email address</label>          
+                                        <div class="input-group">                                                                    
+
+                                            <input type="email" class="form-control" id="emailAddress" placeholder="Enter email">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox">
+                                            </span>
+                                        </div><!-- /input-group -->
+                                        <p class="help-block">Check to make contactable</p>
+
+
+
+                                    </div>
+                                    <div class="input-group col-xs-6">
+                                        <label for="emailAddress">Phone No.</label>          
+                                        <div class="input-group">                                                                    
+
+                                            <input type="email" class="form-control" id="emailAddress" placeholder="Enter Phone No">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox">
+                                            </span>
+                                        </div><!-- /input-group -->
+                                        <p class="help-block">Check to mark contactable</p>
+
+
+
+                                    </div>
+                                    <div class="input-group col-xs-6">
+                                        <label for="emailAddress">Email address</label>          
+                                        <div class="input-group">                                                                    
+
+                                            <input type="email" class="form-control" id="emailAddress" placeholder="Enter email">
+                                            <span class="input-group-addon">
+                                                <input type="checkbox">
+                                            </span>
+                                        </div><!-- /input-group -->
+                                        <p class="help-block">Check to mark primary and contactable</p>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Twitter Handle</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Twitter Handle"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Facebook Handle</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Twitter Handle"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Linkedin Handle</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Twitter Handle"/>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label for="firstName">Skype Handle</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Twitter Handle"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstName">Blog Url</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Twitter Handle"/>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">    <input type="checkbox"> &nbsp; Owner</li>
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">    <input type="checkbox"> &nbsp; Contact</li>
+
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">    <input type="checkbox"> &nbsp; Products</li>
+
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">    <input type="checkbox"> &nbsp; Tasks</li>
+
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio">Premium
+                                        </label>
+
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio">Valued
+                                        </label>                                        
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input type="radio">Normal
+                                        </label>                                        
+                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr><th>Interaction history</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>one</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="form-group">
+                                        <label for="firstName">Comments</label>
+                                        <textarea class="form-control" placeholder="Comment"></textarea>                                        
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                                
+                                </div>
+                                  
+                              </div>
+                        </div>
+
+                    </div>                  
+                    <!--END OF ACCOUNT-->
+
+                </div>  <!--END MAIN WINDOW
+                ---------------------------->
+
+
+            </div><!--/row-->
+            <hr>
+
+            <footer>
+                <p>&copy; Company 2013</p>
+            </footer>
+
+        </div><!--/.container-->
+
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!--<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+        <script src="asset/js/jquery.js"></script>
+        <script src="asset/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

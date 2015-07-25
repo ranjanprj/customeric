@@ -1,0 +1,166 @@
+<wicket:panel>
+
+    <div class="col-xs-12">
+
+        <div class="panel panel-default highlight">
+            <div class="panel-heading">
+                <h3 class="panel-title">User Profile Information</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form " role="form" wicket:id="userProfileForm">
+
+
+                    <div class="row">
+                        <div class="form-group col-xs-2">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <select class="form-control" id="title" wicket:id="title">
+                                    <option>Mr</option>
+                                    <option>Mrs</option>
+                                    <option>Miss</option>
+                                    <option>Dr</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name" wicket:id="firstName"/>                                        
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name" wicket:id="lastName"/>
+                        </div>
+                    </div>
+                    <div class="input-group col-xs-6">
+                        <label for="companyEmailAddress">Company Email address</label>          
+                        <div class="input-group">                                                                    
+
+                            <input type="email" class="form-control" id="companyEmailAddress" placeholder="Company email" wicket:id="companyEmailAddress">
+                            <span class="input-group-addon">
+                                <input type="checkbox">
+                            </span>
+                        </div><!-- /input-group -->
+                        <p class="help-block">Check to make contactable</p>
+
+
+
+                    </div>
+                    <div class="input-group col-xs-6">
+                        <label for="personalEmailAddress">Personal Email address</label>          
+                        <div class="input-group">                                                                  
+                            <input type="email" class="form-control" id="personalEmailAddress" placeholder="Personal Enter email" wicket:id="personalEmailAddress">
+                            <span class="input-group-addon">
+                                <input type="checkbox">
+                            </span>
+                        </div><!-- /input-group -->
+                        <p class="help-block">Check to mark primary and contactable</p>
+                    </div>
+
+                    <div class="input-group col-xs-6">
+                        <label for="phoneNo">Phone No.</label>          
+                        <div class="input-group">                                                                    
+
+                            <input type="text" class="form-control" id="phoneNo" placeholder="Enter Phone No" wicket:id="phoneNumber">
+                            <span class="input-group-addon">
+                                <input type="checkbox">
+                            </span>
+                        </div><!-- /input-group -->
+                        <p class="help-block">Check to mark contactable</p>
+
+
+
+                    </div>
+
+                    <!--                    <div class="form-group">
+                                            <label for="businessCard">Business Card</label>
+                                            <input type="file" id="businessCard">
+                                            <p class="help-block">Upload Business Card</p>
+                                        </div>
+                    
+                                        <div class="form-group">
+                                            <button for="downloadBusinessCard">Download Business Card</button>                       
+                                        </div>-->
+
+
+
+                    <div class="row">
+                        
+                        <div class="form-group col-xs-6">
+                            <hr/>
+                            <label>Home Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="form-group col-xs-6">
+                            <label for="street1">Street1</label>
+                            <input type="text" class="form-control" id="street1" placeholder="Street 1" wicket:id="street1"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="street2">Street 2</label>
+                            <input type="text" class="form-control" id="street2" placeholder="Street 2" wicket:id="street2"/>
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control" id="zip" placeholder="Zip" wicket:id="zip"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="City" wicket:id="city"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" id="state" placeholder="State" wicket:id="state"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" id="country" placeholder="Country" wicket:id="country"/>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label for="twitterHandle">Twitter Handle</label>
+                            <input type="text" class="form-control" id="twitterHandle" placeholder="Twitter Handle" wicket:id="twitterHandle"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="facebookHandle">Facebook Handle</label>
+                            <input type="text" class="form-control" id="facebookHandle" placeholder="Facebook Handle" wicket:id="facebookHandle"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label for="linkedinHandle">Linkedin Handle</label>
+                            <input type="text" class="form-control" id="linkedinHandle" placeholder="Linkedin Handle" wicket:id="linkedInHandle"/>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="skypeHandle">Skype Handle</label>
+                            <input type="text" class="form-control" id="skypeHandle" placeholder="Skype Handle" wicket:id="skypeHandle"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="blogUrl">Blog Url</label>
+                        <input type="text" class="form-control" id="blogUrl" placeholder="Blog Url" wicket:id="blogUrl"/>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <textarea class="form-control" placeholder="Comments" id="comments" wicket:id="comments"></textarea>                                        
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</wicket:panel>

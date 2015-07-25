@@ -1,0 +1,41 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Customeric</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!--    Bootstrap Dependencies -->
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="/customeric/asset/bootstrap/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="/customeric/asset/bootstrap/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="/customeric/asset/bootstrap/js/bootstrap.min.js"></script>
+        
+        
+        <!-- Jquery and friends -->
+        <script type="text/javascrpt" src="/customeric/asset/js/jquery.js"></script>
+
+    </head>
+    <body>
+
+  
+    <p>
+        Message received: <span wicket:id="message"></span>
+    </p>
+    <form wicket:id="form">
+        <div>Session id of receiver: <input wicket:id="receiver" /></div>
+        Message: <input wicket:id="input" /> <a href="#" wicket:id="send">Send
+            message</a>
+    </form>
+    </body>
+</html>
+
+

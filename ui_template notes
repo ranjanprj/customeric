@@ -1,0 +1,14 @@
+Put this in conf file of tomcat, along with pg jdbc driver in 
+the lib file for DS settings...
+
+
+<Resource name="jdbc/CUSTOMERIC_DS" auth="Container"
+             type="javax.sql.DataSource"
+             maxActive="10" maxIdle="3" maxWait="10000"
+             username="postgres"  password="Abcd1234"
+             driverClassName="org.postgresql.Driver"
+             url="jdbc:postgresql://localhost:5432/postgres"
+  />
+
+For compressionput this in server.xml file of tomcat
+<Connector connectionTimeout="20000" port="8084" protocol="HTTP/1.1" redirectPort="8443" compression="on" compressableMimeType="text/html,text/xml,text/plain,application/javascript,application/json,text/css,text/javascript"/>
